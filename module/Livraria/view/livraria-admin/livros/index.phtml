@@ -1,0 +1,33 @@
+<h1>Livros Admin</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Categoria</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Image</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->livros as $data):?>
+        <tr>
+            <td width="5%"><?php echo $data->getId();?></td>
+            <td width="10%"><?php echo $data->getTitle();?></td>
+            <td width="10%"><?php echo $data->getCategoria();?></td>
+            <td width="40%"><?php echo $data->getDescription();?></td>
+            <td width="15%"><?php echo $data->getAuthor();?></td>
+            <td width="10%"><img src="http://<?php echo $_SERVER['SERVER_NAME'].':8899/'.$data->getImgUrl();?>" width="50" height="50" /></td>
+            <td width="10%">
+                <a href="<?php echo $this->url('livraria-admin', ['controller'=>'livros','action'=>'form', 'id'=>$data->getId()]);?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="<?php echo $this->url('livraria-admin', ['controller'=>'livros','action'=>'delete', 'id'=>$data->getId()]);?>"><span class="glyphicon glyphicon-trash"></span></a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+    </tbody>
+</table>
+<br>
+<a href="<?php echo $this->url('livraria-admin', ['controller'=>'livros' ,'action'=>'form']);?>" class="btn btn-primary">Nova</a>
+

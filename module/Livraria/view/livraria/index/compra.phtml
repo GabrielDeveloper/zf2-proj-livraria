@@ -1,0 +1,16 @@
+<form method="post" target="pagseguro"  
+action="https://pagseguro.uol.com.br/v2/checkout/payment.html">  
+          
+        <!-- Campos obrigatórios -->  
+        <input name="receiverEmail" type="hidden" value="gabrielll_07@hotmail.com">  
+        <input name="currency" type="hidden" value="BRL">  
+  
+        <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
+        <input name="itemId1" type="hidden" value="0001">  
+        <input name="itemDescription1" type="hidden" value="Notebook Prata">  
+        <input name="itemAmount1" type="hidden" value="24300.00">  
+        <input name="itemQuantity1" type="hidden" value="1">  
+        <input name="itemWeight1" type="hidden" value="1000">  
+        
+        <button type="submit" class="btn btn-success">Comprar</button>
+</form>

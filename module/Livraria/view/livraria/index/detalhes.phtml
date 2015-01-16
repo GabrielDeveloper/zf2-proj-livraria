@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-3 ">
+        <h3>Mais visitados</h3>
+    </div>
+    <div class="col-md-9 ">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="<?php echo 'http://'.$_SERVER['HTTP_HOST']."/".$this->livro['liv_img_url']?>" class="thumbnail img-responsive"/>
+            </div>
+            <div class="col-md-6 well">
+                <h3><?=$this->livro['liv_title']?></h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="lead"> Preço: R$39,90</p>
+                    </div>
+                    <div class="col-md-6">
+                        OU 2x de R$19,99
+                    </div>
+                </div>
+                <p>Categoria: <?=$this->livro['liv_cat_id']?></p>
+                <form method="post" target="pagseguro"  
+                action="https://pagseguro.uol.com.br/v2/checkout/payment.html">  
+
+                        <!-- Campos obrigatórios -->  
+                        <input name="receiverEmail" type="hidden" value="gabrielll_07@hotmail.com">  
+                        <input name="currency" type="hidden" value="BRL">  
+
+                        <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
+                        <input name="itemId1" type="hidden" value="0001">  
+                        <input name="itemDescription1" type="hidden" value="<?=$this->livro['liv_title']?>">  
+                        <input name="itemAmount1" type="hidden" value="39.00">  
+                        <input name="itemQuantity1" type="hidden" value="1">  
+                        <input name="itemWeight1" type="hidden" value="1000">  
+                
+                        <button class="btn btn-lg btn-danger" type="submit">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Comprar
+                        </button>
+                </form>
+                <button class="btn btn-lg btn-warning">
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>Favorito
+                </button>
+                <a href="<?php echo $this->url('livraria', ['controller'=>'livro','action'=>'status','livro'=>$liv->liv_id]);?>"
+                    class="btn btn-lg btn-warning">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>Status
+                </a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="lead text-center">Opções de Parcelamento</p>
+                        <p>1x de R$ 39,90</p>
+                        <p>2x de R$ 19,99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 well">
+                <h4>Description</h4>
+                <p><?=$this->livro['liv_description'];?></p>
+            </div>
+        </div>
+    </div>
+</div>

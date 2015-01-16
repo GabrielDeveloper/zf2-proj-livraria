@@ -1,0 +1,31 @@
+<h1>Livros Admin</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Token</th>
+            <th>Status</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->data as $data):?>
+        <tr>
+            <td width="5%"><?php echo $data->getId();?></td>
+            <td width="20%"><?php echo $data->getName();?></td>
+            <td width="35%"><?php echo $data->getEmail();?></td>
+            <td width="20%">Token</td>
+            <td width="10%">Status</td>
+            <td width="10%">
+                <a href="<?php echo $this->url('livraria-admin', ['controller'=>'livros','action'=>'form', 'id'=>$data->getId()]);?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="<?php echo $this->url('livraria-admin', ['controller'=>'livros','action'=>'delete', 'id'=>$data->getId()]);?>"><span class="glyphicon glyphicon-trash"></span></a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+    </tbody>
+</table>
+<br>
+<a href="<?php echo $this->url('livraria-admin', ['controller'=>'user' ,'action'=>'form']);?>" class="btn btn-primary">Nova</a>
+

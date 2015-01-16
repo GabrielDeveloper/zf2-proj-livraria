@@ -1,0 +1,17 @@
+<?php
+
+$dado = 'https://ws.pagseguro.uol.com.br/v2/transactions/25FFFB44-6585-42CD-B044-51490FD25673?email=gabrielll_07@hotmail.com&token=5B8818A819544FF4ABE3D6FBE75B36B3';
+
+#inicia a função curl
+    $ch = curl_init();
+ 
+    /*
+     * passe como último argumento a url que será acessada no nosso caso como é um looping pegamos a url corrente passando a variável $dado
+     */
+    curl_setopt($ch, CURLOPT_URL, $dado);
+     
+    #comando para executar o curl
+    curl_exec($ch);
+    var_dump($ch);
+    #fechamos nossa instância
+    curl_close($ch);

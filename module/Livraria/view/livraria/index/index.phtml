@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-3 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="<?php echo $this->url('livraria', ['controller'=>'index', 'action'=>'index']);?>">Todos<span class="sr-only">(current)</span></a></li>
+        <?php foreach ($this->categorias as $categorias):?>
+            <li>
+                <a href="<?php echo $this->url('livraria', ['controller'=>'index', 'action'=>'index'])."?cat_id=".$categorias->cat_id;?>">
+                    <?php echo $categorias->cat_title?>
+                </a>
+            </li>
+        <?php endforeach;?>
+        </ul>
+    </div>   
+    <div class="col-md-9">
+<?php 
+foreach ($this->livros as $liv):
+    $liv = (object) $liv;?>
+    <div class="col-sm-6 col-md-4" >
+        <div class="thumbnail">
+            <img src="<?=$liv->liv_img_url?>" alt="<?=$liv->liv_title?>" style="height:200px">
+            <div class="caption">
+                <h3><?=$liv->liv_title?></h3>
+                <p><?=$liv->liv_description?></p>
+                <p>
+                    <a href="<?php echo $this->url('livraria', ['controller'=>'index','action'=>'detalhes','livro'=>$liv->liv_id]);?>" class="btn btn-primary" role="button">
+                        Detalhes
+                    </a> 
+                    <a href="<?php echo $this->url('livraria', ['controller'=>'index','action'=>'compra','livro'=>$liv->liv_id]);?>" class="btn btn-default" role="button">
+                        Add no Carrinho
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+<?php endforeach;?>
+    </div>
+</div>
+
