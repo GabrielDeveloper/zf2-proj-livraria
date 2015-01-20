@@ -5,12 +5,13 @@ return [
     'router' => [
         'routes'=>[
             'bible-home'=>[
-                'type'=>'Literal',
+                'type'=>'Segment',
                 'options'=> [
-                    'route'=>'/bible',
+                    'route'=>'/bible/[:action[/:book[/:page]]]',
                     'defaults'=>[
                         'controller'=>'Bible\Controller\Index',
-                        'action'=>'index'
+                        'action'=>'index',
+                        'page'=>1,
                     ]
                 ]
             ]

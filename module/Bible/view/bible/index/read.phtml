@@ -1,0 +1,10 @@
+<h1>Testando View</h1>
+<form method="post">
+<ul>
+    <?php foreach ($this->planos as $plano):?>
+    <li>
+        <button type="submit" name="button" class="btn btn-link"value="<?php echo $plano->id;?>"><?php echo $plano->name;?></button>
+    </li>
+    <?php endforeach;?>
+</ul>
+</form>
