@@ -1,10 +1,12 @@
-<h1>Testando View</h1>
-<form method="post">
-<ul>
-    <?php foreach ($this->planos as $plano):?>
-    <li>
-        <button type="submit" name="button" class="btn btn-link"value="<?php echo $plano->id;?>"><?php echo $plano->name;?></button>
-    </li>
-    <?php endforeach;?>
-</ul>
+<?php
+
+var_dump($this->book); ?>
+
+<form method="post" action="<?php echo $this->url('bible-home',['controller'=>'index', 'action'=>'read'])?>">
+<nav>
+  <ul class="pager">
+    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Anterior</a></li>
+    <li class="next"><a href="#">Próximo <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>
 </form>

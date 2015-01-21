@@ -67,4 +67,40 @@ class VersesService {
         return $text;
     }
     
+    public function selectDistinctChapter(){
+        
+        $where = [
+            'book'=>    1,
+        ];
+        /*
+        $this->versesTable->setColumns(['chapter']);
+        $this->versesTable->setQuantifier('DISTINCT');
+        $select = $this->versesTable->select($where);
+        foreach ($select as $dt){
+            $text[] = $dt;
+        }
+        
+        var_dump($text);
+        
+        return $text;
+        $select = $this->versesTable;
+        $select->select($where);
+        foreach ($select as $dt){
+            $text[] = $dt;
+        }
+        */
+        $sql = new \Zend\Db\Sql\Sql($this->versesTable->getAdapter());
+        $st = $sql->select($this->versesTable->getTable());
+        $st->columns(['chapter']);
+        $st->where($where);
+        $st->quantifier('DISTINCT');
+        $stm = $sql->prepareStatementForSqlObject($st);
+        $res = $stm->execute();
+        
+        var_dump($res);
+        
+        
+        die;
+    }
+    
 }

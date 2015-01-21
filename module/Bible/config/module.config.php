@@ -7,7 +7,7 @@ return [
             'bible-home'=>[
                 'type'=>'Segment',
                 'options'=> [
-                    'route'=>'/bible/[:action[/:book[/:page]]]',
+                    'route'=>'/bible[/:action[/:book[/:page]]]',
                     'defaults'=>[
                         'controller'=>'Bible\Controller\Index',
                         'action'=>'index',

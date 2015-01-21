@@ -1,6 +1,12 @@
-<h1>Testando View</h1>
+<h1>Reading the Holy Bible</h1>
+<form method="post" action="<?php echo $this->url('bible-home',['controller'=>'index', 'action'=>'read'])?>">
 <ul>
     <?php foreach ($this->planos as $plano):?>
-    <li><?php echo $plano;?></li>
-    <?php endforeach;?>
+    <li>
+        <button type="submit" name="button" class="btn btn-link"value="<?php echo $this->book['book'];?>"><?php echo $plano->name;?></button>
+    </li>
+    <?php endforeach;
+ var_dump($book);
+    ?>
 </ul>
+</form>

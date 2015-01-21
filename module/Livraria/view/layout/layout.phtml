@@ -45,6 +45,8 @@
                         <li class=""><a href="<?php echo $this->url('livraria-admin', ['controller'=>'user']) ?>"><?php echo $this->translate('Users') ?></a></li>
                         <li class=""><a href="<?php echo $this->url('livraria-admin', ['controller'=>'versiculos', 'action'=>'salvar']) ?>"><?php echo $this->translate('Salvar ver.') ?></a></li>
                         <li class=""><a href="<?php echo $this->url('admin-logout') ?>"><?php echo $this->translate('Logout') ?></a></li>
+                        <?php else:?>
+                        <li class=""><a href="<?php echo $this->url('admin-login') ?>"><?php echo $this->translate('Logar') ?></a></li>
                         <?php endif;?>
                     </ul>
                 </div><!--/.nav-collapse -->
