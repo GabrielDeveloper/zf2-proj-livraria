@@ -29,4 +29,13 @@ class BookService {
         return $data;
     }
     
+    public function selectById($id){
+        $where = ['id'=>  $id];
+        $dado = $this->bookTable->select($where);
+        foreach ($dado as $dt){
+            $data[] = $dt;
+        }
+        return $data[0];
+    }
+    
 }
