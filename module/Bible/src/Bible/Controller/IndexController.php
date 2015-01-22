@@ -5,9 +5,7 @@ namespace Bible\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-use Zend\Paginator\Paginator,
- Zend\Paginator\Adapter\ArrayAdapter,
- Zend\Session\Container;
+use Zend\Session\Container;
 
 class IndexController extends AbstractActionController{
     
@@ -15,31 +13,34 @@ class IndexController extends AbstractActionController{
         $books = $this->getServiceBook();
         $livro = $books->fetchAll();
         
-        $session = new Container('book');
-        $book = $this->params()->fromPost('button');
-        
-        if($book!=null){
-            $reading['book'] = $book+1;
-            $reading['chapter'] = 1;
-            $session->book = $reading;
-        }
         //die();
-        return new ViewModel(['planos'=>$livro, 'book'=>$session->book]);
+        return new ViewModel(['planos'=>$livro]);
     }
     
     public function readAction(){
-        $books = $this->getServiceVerses();
+        
+        $books = $this->getServiceBook();
+        $verses = $this->getServiceVerses();
         $session = new Container('book');
         
-        $livro = $books->selectDistinctChapter();
-        
         $book = $this->params()->fromPost('button');
+        $chapter = $this->params()->fromPost('chapter');
+        $totalChapter = $verses->selectDistinctChapter($book);
         
-        //var_dump($session->book);
-        //die();
         
+        if($book!=null || $chapter!=null){
+            $reading['book'] = $book==null?$session->book['book']:$book;
+            $nameBook = $books->selectById($reading['book']);
+            $reading['nameBook'] = $nameBook;
+            
+            $reading['chapter'] = $chapter==null?1:$chapter;
+            $reading['totalChapters'] = $totalChapter==null?$session->book['totalChapters']:$totalChapter;
+            $session->book = $reading;
+        }
         
-        return new ViewModel(['book'=>$session->book]);
+        $versos = $verses->selectChapter($reading);
+        
+        return new ViewModel(['book'=>$session->book, 'verses'=>$versos]);
     }
     
     protected function getServiceBook(){

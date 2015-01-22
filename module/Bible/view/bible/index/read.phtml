@@ -1,12 +1,34 @@
 <?php
+$next = ($this->book['chapter'] < $this->book['totalChapters']) ? $this->book['chapter'] + 1 : $this->book['chapter'];
+$prev = ($this->book['chapter'] > 1) ? $this->book['chapter'] - 1 : $this->book['chapter'];
+?>
+<div class="row">
+    <form method="post" action="<?php echo $this->url('bible-home', ['controller' => 'index', 'action' => 'read']) ?>">
+        <div class="col-md-8">
+            <h1><?php echo $this->book['nameBook']->name . ' - ' . $this->book['chapter']; ?></h1>
+            <ol>
+<?php foreach ($this->verses as $verse): ?>
+                    <li><?php echo $verse; ?></li>
+                <?php endforeach; ?>
+            </ol>
 
-var_dump($this->book); ?>
-
-<form method="post" action="<?php echo $this->url('bible-home',['controller'=>'index', 'action'=>'read'])?>">
-<nav>
-  <ul class="pager">
-    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Anterior</a></li>
-    <li class="next"><a href="#">Próximo <span aria-hidden="true">&rarr;</span></a></li>
-  </ul>
-</nav>
-</form>
+            <nav>
+                <ul class="pager">
+                    <li class="previous"><button name="chapter" value="<?php echo $prev; ?>"><span aria-hidden="true">&larr;</span> Anterior</button></li>
+                    <li class="next"><button name="chapter" value="<?php echo $next; ?>">Próximo <span aria-hidden="true">&rarr;</span></button></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-4">
+            <h3>Chapters</h3>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="First group">
+                    <?php for ($i = 0; $i < $this->book['totalChapters']; $i++): ?>
+                        <button type="submit" class="btn btn-default" name="chapter" value="<?php echo $i + 1 ?>"><?php echo $i + 1 ?></button>
+                    
+                    <?php endfor; ?>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

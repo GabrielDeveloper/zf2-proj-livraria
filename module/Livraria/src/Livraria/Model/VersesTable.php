@@ -10,7 +10,7 @@ use Zend\Db\Adapter\Adapter,
 class VersesTable extends AbstractTableGateway{
     
     protected $table = 'verses';
-    protected $columns;
+    protected $columns = ['*'];
     protected $quantifier;
     
     public function __construct($adapter) {
