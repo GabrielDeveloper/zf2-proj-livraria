@@ -89,6 +89,6 @@ class CategoriasController extends AbstractActionController{
     }
     
     public function getCatService(){
-        return $this->getServiceLocator()->get('Livraria\Model\CategoriaService');
+        return $this->getServiceLocator()->get('Livraria\Service\CategoriaService');
     }
 }

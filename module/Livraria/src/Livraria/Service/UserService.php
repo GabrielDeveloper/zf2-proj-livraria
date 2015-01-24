@@ -1,7 +1,9 @@
 <?php
 
 
-namespace Livraria\Model;
+namespace Livraria\Service;
+
+use Livraria\Model\UserTable;
 
 class UserService {
     

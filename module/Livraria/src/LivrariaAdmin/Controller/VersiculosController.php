@@ -36,15 +36,15 @@ class VersiculosController extends AbstractActionController{
     }
     
     protected function getServiceVersiculoDia(){
-        return $this->serviceLocator->get('Livraria\Model\VersiculoService');
+        return $this->serviceLocator->get('Livraria\Service\VersiculoService');
     }
     
     protected function getServiceBook(){
-        return $this->serviceLocator->get('Livraria\Model\BookService');
+        return $this->serviceLocator->get('Livraria\Service\BookService');
     }
     
     protected function getServiceVerses(){
-        return $this->serviceLocator->get('Livraria\Model\VersesService');
+        return $this->serviceLocator->get('Livraria\Service\VersesService');
     }
     
     public function getVersiculoDia(){

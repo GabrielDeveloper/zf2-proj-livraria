@@ -44,10 +44,10 @@ class IndexController extends AbstractActionController{
     }
     
     protected function getServiceBook(){
-        return $this->serviceLocator->get('Livraria\Model\BookService');
+        return $this->serviceLocator->get('Livraria\Service\BookService');
     }
     
     protected function getServiceVerses(){
-        return $this->serviceLocator->get('Livraria\Model\VersesService');
+        return $this->serviceLocator->get('Livraria\Service\VersesService');
     }
 }

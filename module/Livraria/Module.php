@@ -30,40 +30,40 @@ class Module {
     public function getServiceConfig(){
         return [
             'factories'=>[
-                'Livraria\Model\CategoriaService'=>function($sm){
+                'Livraria\Service\CategoriaService'=>function($sm){
                     $adapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $categoriaTable = new Model\CategoriaTable($adapter);
-                    $categoriaService = new Model\CategoriaService($categoriaTable);
+                    $categoriaService = new \Livraria\Service\CategoriaService($categoriaTable);
                     return $categoriaService;
                 },
-                'Livraria\Model\VersiculoService'=>function($sm){
+                'Livraria\Service\VersiculoService'=>function($sm){
                     $adapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $versiculoTable = new Model\VersiculoTable($adapter);
-                    $versiculoService = new Model\VersiculoService($versiculoTable);
+                    $versiculoService = new \Livraria\Service\VersiculoService($versiculoTable);
                     return $versiculoService;
                 },
-                'Livraria\Model\BookService'=>function($sm){
+                'Livraria\Service\BookService'=>function($sm){
                     $adapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $bookTable = new Model\BookTable($adapter);
-                    $bookService = new Model\BookService($bookTable);
+                    $bookService = new \Livraria\Service\BookService($bookTable);
                     return $bookService;
                 },
-                'Livraria\Model\VersesService'=>function($sm){
+                'Livraria\Service\VersesService'=>function($sm){
                     $adapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $versesTable = new Model\VersesTable($adapter);
-                    $versesService = new Model\VersesService($versesTable);
+                    $versesService = new \Livraria\Service\VersesService($versesTable);
                     return $versesService;
                 },
-                'Livraria\Model\LivroService'=>function($sm){
+                'Livraria\Service\LivroService'=>function($sm){
                     $adapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $livroTable = new Model\LivroTable($adapter);
-                    $livroService = new Model\LivroService($livroTable);
+                    $livroService = new \Livraria\Service\LivroService($livroTable);
                     return $livroService;
                 },
-                'Livraria\Model\UserService'=>function($sm){
+                'Livraria\Service\UserService'=>function($sm){
                     $adapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $userTable = new Model\UserTable($adapter);
-                    $userService = new Model\UserService($userTable);
+                    $userService = new \Livraria\Service\UserService($userTable);
                     return $userService;
                 },
                 'LivrariaAdmin\Service\Auth'=>  function($sm){

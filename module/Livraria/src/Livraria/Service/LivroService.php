@@ -1,9 +1,11 @@
 <?php
 
-namespace Livraria\Model;
+namespace Livraria\Service;
 
 use Zend\Validator\File\Size,
     Zend\File\Transfer\Adapter\Http;
+
+use Livraria\Model\LivroTable;
 
 class LivroService {
     

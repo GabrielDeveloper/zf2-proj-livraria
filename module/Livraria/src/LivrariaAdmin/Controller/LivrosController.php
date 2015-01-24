@@ -87,11 +87,11 @@ class LivrosController extends AbstractActionController{
     }
     
     public function getLivroService(){
-        return $this->getServiceLocator()->get('Livraria\Model\LivroService');
+        return $this->getServiceLocator()->get('Livraria\Service\LivroService');
     }
     
     public function getCatById(){
-        $catCervice = $this->getServiceLocator()->get('Livraria\Model\CategoriaService');
+        $catCervice = $this->getServiceLocator()->get('Livraria\Service\CategoriaService');
         return $catCervice;
     }
 
