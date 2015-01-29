@@ -15,7 +15,7 @@ class Auth{
     
     public function __construct($sm) {
         $this->adapter = $sm->get('Zend\Db\Adapter\Adapter');
-        $this->userService = $sm->get('Livraria\Model\UserService');
+        $this->userService = $sm->get('Livraria\Service\UserService');
         $this->sessionUser = $sm->get('SessionUser');
         
     }

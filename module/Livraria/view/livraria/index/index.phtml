@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-3 sidebar">
         <ul class="nav nav-sidebar">
-            <li class="active"><a href="<?php echo $this->url('livraria', ['controller'=>'index', 'action'=>'index']);?>">Todos<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/">Todos<span class="sr-only">(current)</span></a></li>
         <?php foreach ($this->categorias as $categorias):?>
             <li>
                 <a href="<?php echo $this->url('livraria', ['controller'=>'index', 'action'=>'index'])."?cat_id=".$categorias->cat_id;?>">

@@ -19,8 +19,22 @@ class VersesService {
     }
     
     public function selectVerses(Array $data){
-        if(strpos($data['vd_versiculos'], '-')){
-            $versiculo = explode('-', $data['vd_versiculos']);
+        
+        if (strpos($data['vd_versiculos'], ',')){
+            $ver = explode(',', $data['vd_versiculos']);
+            foreach ($ver as $v){
+                if(strpos($v, '-')){
+                    $n = explode('-',$v);
+                    //verifica se o segundo versiculo é o proximo do primeiro
+                    if(($n[0]+1) !== $n[1]){
+                        for($i=$n[0];$i<=$n[1];$i++){
+                            $versiculo[] = $i; 
+                        }
+                    }
+                }else {
+                    $versiculo[] = $v;
+                }
+            }
         } else{
             $versiculo = $data['vd_versiculos'];
         }
@@ -28,6 +42,7 @@ class VersesService {
         $where = [
             'book'=>    $data['vd_livro'],
             'chapter'=> $data['vd_capitulo'],
+            'version'=>'aa',
         ];
         if($versiculo!=null){
            $where['verse'] = $versiculo;
@@ -45,6 +60,7 @@ class VersesService {
         $where = [
             'book'=>    $data['book'],
             'chapter'=> $data['chapter'],
+            'version'=> $data['version'],
         ];
         
         $select = $this->versesTable->select($where);

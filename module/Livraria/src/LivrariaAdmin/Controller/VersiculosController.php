@@ -22,7 +22,6 @@ class VersiculosController extends AbstractActionController{
     public function salvarAction(){
         $data = $this->getVersiculoDia();
         $versiculo = $this->getServiceVersiculoDia();
-        var_dump($versiculo);
         if($versiculo == false){
             $msg = '<div class="alert alert-success" role="alert"> Nenhum versículo foi selecionado! Url Not Found</div>';
         }else {

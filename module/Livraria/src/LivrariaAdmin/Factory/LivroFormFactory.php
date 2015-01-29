@@ -15,7 +15,7 @@ use Zend\ServiceManager\FactoryInterface,
 class LivroFormFactory implements FactoryInterface{
     
     public function createService(ServiceLocatorInterface $serviceLocator) {
-        $categorias = $serviceLocator->get('Livraria\Model\CategoriaService');
+        $categorias = $serviceLocator->get('Livraria\Service\CategoriaService');
         
         $form = new LivroForm(); 
         $form->setCategorias($categorias);

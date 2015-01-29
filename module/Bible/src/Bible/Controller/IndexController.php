@@ -13,8 +13,10 @@ class IndexController extends AbstractActionController{
         $books = $this->getServiceBook();
         $livro = $books->fetchAll();
         
+        $verse = $this->getVersiculoDia();        
+        
         //die();
-        return new ViewModel(['planos'=>$livro]);
+        return new ViewModel(['planos'=>$livro, 'data'=>$verse]);
     }
     
     public function readAction(){
@@ -27,12 +29,11 @@ class IndexController extends AbstractActionController{
         $chapter = $this->params()->fromPost('chapter');
         $totalChapter = $verses->selectDistinctChapter($book);
         
-        
-        if($book!=null || $chapter!=null){
+        if($book!=null || $chapter!=null || $version!=null){
             $reading['book'] = $book==null?$session->book['book']:$book;
             $nameBook = $books->selectById($reading['book']);
             $reading['nameBook'] = $nameBook;
-            
+            $reading['version'] = $version==null?'aa':$version;
             $reading['chapter'] = $chapter==null?1:$chapter;
             $reading['totalChapters'] = $totalChapter==null?$session->book['totalChapters']:$totalChapter;
             $session->book = $reading;
@@ -43,11 +44,23 @@ class IndexController extends AbstractActionController{
         return new ViewModel(['book'=>$session->book, 'verses'=>$versos]);
     }
     
+    public function versionAction(){
+        $version = $this->params()->fromPost('version');
+        return $this->redirect()->toRoute('bible-home', ['controller'=>'index', 'action'=>'read']);
+    }
+    
+    
     protected function getServiceBook(){
         return $this->serviceLocator->get('Livraria\Service\BookService');
     }
     
     protected function getServiceVerses(){
         return $this->serviceLocator->get('Livraria\Service\VersesService');
+    }
+    
+    public function getVersiculoDia(){
+        $data = $this->serviceLocator->get('LivrariaAdmin\Factory\VersiculoDia');        
+        $verse = $this->serviceLocator->get('Livraria\Service\VersesService');
+        return $verse->selectVerses($data);
     }
 }

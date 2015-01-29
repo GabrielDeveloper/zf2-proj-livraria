@@ -1,12 +1,50 @@
-<h1>Reading the Holy Bible</h1>
-<form method="post" action="<?php echo $this->url('bible-home',['controller'=>'index', 'action'=>'read'])?>">
-<ul>
-    <?php foreach ($this->planos as $plano):?>
-    <li>
-        <button type="submit" name="button" class="btn btn-link"value="<?php echo $plano->id;?>"><?php echo $plano->name;?></button>
-    </li>
-    <?php endforeach;
- var_dump($book);
-    ?>
-</ul>
-</form>
+<h1>Holy Bible</h1>
+<div class="row">
+    <div class="col-lg-9">
+        <form method="post" action="<?php echo $this->url('bible-home', ['controller' => 'index', 'action' => 'read']) ?>">
+            <div class="col-lg-12">
+            <h3>Antigo Testamento</h3>
+            <div class="col-md-3">
+                <ul class="nav ">
+                    <?php
+                    $count = 0;
+                    foreach ($this->planos as $plano):
+                        $count++;
+                        echo '<li>' .
+                        '<button type="submit" name="button" class="btn btn-link"value="' . $plano->id . '">' . $plano->name . '</button>' .
+                        '</li>';
+                        if($count==39){
+                            echo '</ul>' .
+                            '</div>' .
+                            '</div>' .
+                            '<div class="col-lg-12">'.
+                            '<h3>Novo Testamento</h3>'.
+                            '<div class="col-md-3">' .
+                            '<ul class="nav">';
+                            $count = 0;
+                        }else if (($count % 10) == 0) {
+                            echo '</ul>' .
+                            '</div>' .
+                            '<div class="col-md-3">' .
+                            '<ul class="nav">';
+                        }
+                    endforeach;
+                    ?>
+                </ul>
+            </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3">
+        <div class="row">
+        <h3>Verse of Day</h3>
+        <p><?php echo $this->data;?></p>
+        </div>
+        <div class="row">
+            <select id="version">
+                <option value="aa"> AA</option>
+                <option value="nvi"> NVI</option>
+            </select>
+        </div>
+    </div>
+</div>
