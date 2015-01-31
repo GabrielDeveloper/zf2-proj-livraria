@@ -22,6 +22,7 @@ class CategoriasController extends AbstractActionController{
         
         if($this->params('id')){
             $data = $categoriaTable->selectById($this->params('id'));
+            $this->postForm->setData($data);
         }        
         $viewModel = new ViewModel(['data'=>$data, 'postForm'=>$this->postForm]);
         return $viewModel;

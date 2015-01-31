@@ -5,15 +5,9 @@
 <?php
 
 $form = $this->postForm;
-#var_dump($this->data);
-if(isset($this->data)){
-    $form->get('cat_id')->setAttributes(['value'=>$this->data['cat_id']]);
-    $form->get('cat_title')->setAttributes(['value'=>$this->data['cat_title']]);
-    $form->get('cat_description')->setAttributes(['value'=>$this->data['cat_description']]);
-    if(!is_null($this->data['cat_img_url']))
+if(!is_null($this->data['cat_img_url'])){
         $img = '<img src=http://'.$_SERVER['HTTP_HOST']."/".$this->data['cat_img_url'].' height="100" />';
 }
-
 
 $form->prepare();
 $form->setAttribute('action', $this->url('livraria-admin', ['controller'=>'categorias', 'action'=>'add']));
