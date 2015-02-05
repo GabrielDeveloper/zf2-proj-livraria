@@ -35,7 +35,17 @@ class VersesService {
                     $versiculo[] = $v;
                 }
             }
-        } else{
+        } else if(strpos($data['vd_versiculos'], '-')){
+            $n = explode('-',$data['vd_versiculos']);
+            //verifica se o segundo versiculo é o proximo do primeiro
+            if(($n[0]+1) != $n[1]){
+                for($i=$n[0];$i<=$n[1];$i++){
+                    $versiculo[] = $i; 
+                }
+            } else {
+                $versiculo = $n;
+            }
+        }else {
             $versiculo = $data['vd_versiculos'];
         }
         
