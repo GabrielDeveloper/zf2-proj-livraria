@@ -43,7 +43,7 @@ return [
            'livraria-admin'=>[
                'type'=>'Segment',
                'options'=>[
-                   'route'=>'/admin[/:controller[/:action[/:id]]]',
+                   'route'=>'/admin[/:controller[/:action[/:id[/:cat_id]]]]',
                    'defaults'=>[
                        'controller'=>'categorias',
                        'action'=>'index',

@@ -15,7 +15,11 @@ class VersiculoDiaFactory implements FactoryInterface{
             return false;
         }
         $verso =(string) $url->channel->item->title;
-       /* $verso = 'Lucas 2:14-16, 20-25'; //Para testar comente o código acima e use esta linha!*/
+        if(strpos($verso, ': ') != false){
+            $v = explode(': ', $verso);
+            $verso = $v[0].':'.$v[1];
+        }
+        //$verso = '1 João 4:9'; //Para testar comente o código acima e use esta linha!
         $ref = explode(' ', $verso);
 
         if(count($ref) == 3 && is_numeric($ref[0])){

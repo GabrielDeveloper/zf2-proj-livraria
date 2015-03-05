@@ -37,25 +37,8 @@ $prev = ($this->book['chapter'] > 1) ? $this->book['chapter'] - 1 : $this->book[
                     <option value="aa"> AA</option>
                     <option value="nvi"> NVI</option>
                 </select>
+                <button type="submit" class="btn btn-default" >Trocar Versao</button>
             </div>
-            <script type="text/javascript">
-             $('#version').change(function(){
-                var myData = $('#version').val()
-                /*$.ajax({
-                        'type':"POST",
-                        'url' : '/bible/version',
-                        data: myData,
-                        success: function() {
-                            alert("AJAX call a success!");
-                        },
-                        error: function() {
-                              alert("AJAX call an epic failure");
-                        }
-
-                })*/
-             })
-            
-            </script>
         </div>
     </form>
 </div>

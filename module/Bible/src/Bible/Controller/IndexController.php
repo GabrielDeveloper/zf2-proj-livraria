@@ -28,8 +28,8 @@ class IndexController extends AbstractActionController{
         $book = $this->params()->fromPost('button');
         $chapter = $this->params()->fromPost('chapter');
         $totalChapter = $verses->selectDistinctChapter($book);
-        
-        if($book!=null || $chapter!=null || $version!=null){
+        $version = $this->params()->fromPost('version');
+        //if($book!=null || $chapter!=null || $version!=null){
             $reading['book'] = $book==null?$session->book['book']:$book;
             $nameBook = $books->selectById($reading['book']);
             $reading['nameBook'] = $nameBook;
@@ -37,16 +37,22 @@ class IndexController extends AbstractActionController{
             $reading['chapter'] = $chapter==null?1:$chapter;
             $reading['totalChapters'] = $totalChapter==null?$session->book['totalChapters']:$totalChapter;
             $session->book = $reading;
-        }
+        //}
         
         $versos = $verses->selectChapter($reading);
         
         return new ViewModel(['book'=>$session->book, 'verses'=>$versos]);
     }
     
+    public function bibleVersionAction(){
+        $versos = $this->getServiceLocator()->get('Bible\Factory\BibleVersion');
+        return new ViewModel(['versos'=>$versos]);
+    }
+    
+            
     public function versionAction(){
-        $version = $this->params()->fromPost('version');
-        return $this->redirect()->toRoute('bible-home', ['controller'=>'index', 'action'=>'read']);
+        
+        return $this->redirect()->toRoute('bible-home', ['controller'=>'index', 'action'=>'read','version'=>$version]);
     }
     
     
