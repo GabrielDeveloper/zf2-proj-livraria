@@ -28,6 +28,11 @@ return [
         'template_path_stack'=>[
             __DIR__.'/../view',
         ]
+    ],
+    'service_manager'=>[
+        'factories'=>[
+            'Bible\Factory\BibleVersion'=>'Bible\Factory\BibleVersionFactory'
+        ]
     ]
     
 ];
