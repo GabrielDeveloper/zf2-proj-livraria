@@ -37,15 +37,6 @@
         </form>
     </div>
     <div class="col-md-3">
-        <div class="row">
-        <h3>Verse of Day</h3>
-        <p><?php echo $this->data;?></p>
-        </div>
-        <div class="row">
-            <select id="version">
-                <option value="aa"> AA</option>
-                <option value="nvi"> NVI</option>
-            </select>
-        </div>
+        <?php echo $this->partial('bible/index/modVersiculo.phtml', array('data' => $this->data));?>
     </div>
 </div>

@@ -31,14 +31,7 @@ $prev = ($this->book['chapter'] > 1) ? $this->book['chapter'] - 1 : $this->book[
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <h3>Select the Version</h3>
-                <select id="version" name="version">
-                    <option value="aa"> AA</option>
-                    <option value="nvi"> NVI</option>
-                </select>
-                <button type="submit" class="btn btn-default" >Trocar Versao</button>
-            </div>
+            <?php echo $this->partial('bible/index/modVersiculo.phtml', array('data' => $this->data));?><br>
         </div>
     </form>
 </div>

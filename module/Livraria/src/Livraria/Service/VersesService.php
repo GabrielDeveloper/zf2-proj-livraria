@@ -63,7 +63,7 @@ class VersesService {
         }
         $texto = implode(' ', $text);
         
-        return $texto."<br>".$data['vd_ref'];
+        return $texto."<br><strong>".$data['vd_ref']."</strong>";
     }
     
     public function selectChapter(Array $data){

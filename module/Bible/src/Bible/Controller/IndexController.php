@@ -40,8 +40,8 @@ class IndexController extends AbstractActionController{
         //}
         
         $versos = $verses->selectChapter($reading);
-        
-        return new ViewModel(['book'=>$session->book, 'verses'=>$versos]);
+        $data = $this->getVersiculoDia();
+        return new ViewModel(['book'=>$session->book, 'verses'=>$versos, 'data'=>$data]);
     }
     
     public function bibleVersionAction(){
