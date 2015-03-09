@@ -16,7 +16,7 @@ class BibleVersionFactory implements FactoryInterface{
                 $ve = 1;
                 do{
                     //$url = 'https://www.biblegateway.com/passage/?search=G%C3%AAnesis+1:'.$ve.'&version=NTLH';
-                    $url = 'https://www.biblegateway.com/passage/?search=1joao+'.$i.':'.$ve.'&version=NVI-PT';
+                    $url = 'https://www.biblegateway.com/passage/?search=1joao+'.$i.':'.$ve.'&version=ARC';
                     $content = file_get_contents($url);
 
                     if($ve == 1){
