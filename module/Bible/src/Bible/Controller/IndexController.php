@@ -15,7 +15,6 @@ class IndexController extends AbstractActionController{
         
         $verse = $this->getVersiculoDia();        
         
-        //die();
         return new ViewModel(['planos'=>$livro, 'data'=>$verse]);
     }
     
@@ -33,8 +32,16 @@ class IndexController extends AbstractActionController{
             $reading['book'] = $book==null?$session->book['book']:$book;
             $nameBook = $books->selectById($reading['book']);
             $reading['nameBook'] = $nameBook;
-            $reading['version'] = $version==null?'aa':$version;
-            $reading['chapter'] = $chapter==null?1:$chapter;
+            if($version==null && !$session->book['version']){
+                $reading['version'] = $version==null?'aa':$version;            
+            } else {
+                $reading['version'] = $version==null?$session->book['version']:$version;   
+            }
+            if($version==null && !$session->book['version']){
+                $reading['chapter'] = $chapter==null?1:$chapter;
+            } else {
+                $reading['chapter'] = $chapter==null?$session->book['chapter']:$chapter;
+            }
             $reading['totalChapters'] = $totalChapter==null?$session->book['totalChapters']:$totalChapter;
             $session->book = $reading;
         //}
